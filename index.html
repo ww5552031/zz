@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互联网+工会平台规划 - 智能升级版</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-hover-color: #0056b3;
+            --secondary-color: #6c757d;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #343a40;
+            --text-color: #212529;
+            --white-color: #ffffff;
+            --success-color: #28a745;
+            --info-color: #17a2b8;
+
+            --border-radius-sm: 0.25rem;
+            --border-radius-md: 0.5rem;
+            --border-radius-lg: 0.75rem;
+
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: "Microsoft YaHei",  Arial, "PingFang SC", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px 40px;
+            background-color: var(--white-color);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px; /* Reduced margin */
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        header h1 {
+            font-size: 2.6em;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        /* Removed h1 .icon styling as icon is removed */
+
+        .intro-text {
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            text-align: justify;
+            margin-bottom: 30px;
+            padding: 15px 20px;
+            background-color: #f0f8ff;
+            border-left: 5px solid var(--primary-color);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .header-image-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 350px; /* Control max height */
+            object-fit: cover; /* Ensure image covers area well */
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section {
+            margin-bottom: 50px;
+            padding: 0; /* Padding moved to inner elements or handled by content */
+            /* background-color: var(--white-color); No longer needed, as container is white */
+            border-radius: var(--border-radius-md);
+            /* border: 1px solid var(--medium-gray); Removed for a cleaner look inside container */
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: var(--dark-gray);
+            margin-bottom: 25px; /* Adjusted margin */
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        .section-title .icon {
+            margin-right: 15px;
+            font-size: 1.2em;
+            color: var(--primary-color);
+            width: 30px;
+            text-align: center;
+        }
+
+        .section-content-wrapper {
+            display: flex;
+            gap: 30px; /* Space between image and text */
+            align-items: flex-start; /* Align items to the top */
+            margin-top: 20px; /* Space below section title */
+        }
+        .section-image-container {
+            flex: 0 0 35%; /* Image takes up about 35% of the width */
+            max-width: 320px; /* Max width for image */
+        }
+        .section-image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            object-fit: cover;
+        }
+        .section-text-container {
+            flex: 1; /* Text takes remaining space */
+        }
+
+
+        .subsection {
+            margin-bottom: 25px;
+            padding-left: 10px;
+            border-left: 3px solid var(--medium-gray);
+        }
+        .subsection:last-child { margin-bottom: 0; }
+
+        .subsection-title {
+            font-size: 1.4em;
+            color: var(--primary-hover-color);
+            margin-bottom: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        .subsection-title .icon {
+            margin-right: 10px;
+            font-size: 0.9em;
+            color: var(--success-color);
+        }
+
+        .subsection p, .subsection ul {
+            margin-left: 25px;
+            color: #495057;
+            font-size: 1em;
+        }
+        .subsection ul { list-style: none; padding-left: 0; }
+        .subsection ul li {
+            padding-left: 1.8em;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .subsection ul li::before {
+            content: "\f105";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        .tool-highlight {
+            background-color: #e0f3ff;
+            color: var(--primary-hover-color);
+            padding: 0.25em 0.6em;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.9em;
+            border: 1px solid #b0deff; /* Corrected invalid hex */
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+            margin: 0 2px;
+        }
+        .tool-highlight:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            transform: translateY(-2px);
+            cursor: default;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 25px;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--medium-gray);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        th {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:nth-child(even) td { background-color: var(--light-gray); }
+        tbody tr:hover td {
+            background-color: #d0eefe; /* Corrected invalid hex */
+            color: var(--primary-color);
+            transition: background-color 0.2s ease;
+        }
+        td .icon {
+            margin-right: 8px;
+            color: var(--secondary-color);
+            width: 20px;
+            display: inline-block;
+            text-align: center;
+        }
+        tbody tr:hover td .icon { color: var(--primary-color); }
+
+        /* Responsive adjustments for images and layout */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px 10px;
+                padding: 20px 15px;
+            }
+            header h1 { font-size: 2em; }
+            .section-title { font-size: 1.6em; }
+            .subsection-title { font-size: 1.25em; }
+            .intro-text { font-size: 1em; padding: 10px 15px; }
+            .subsection p, .subsection ul { margin-left: 15px; }
+
+            .section-content-wrapper {
+                flex-direction: column; /* Stack image and text vertically */
+            }
+            .section-image-container {
+                flex: 0 0 auto; /* Reset flex basis */
+                width: 100%; /* Image container takes full width */
+                max-width: 100%; /* Override max-width for stacking */
+                margin-bottom: 20px; /* Space below image when stacked */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>互联网+工会平台规划</h1>
+        </header>
+
+        <p class="intro-text">
+            公众号功能集成+公司内网+公司网站等互联网全平台宣传发布，设立职工风采、最新资讯、法律法规、公益活动、心理健康等核心栏目，整合国内主流互联网平台能力，兼顾高速公路行业分散作业特性，可通过低成本SaaS工具快速落地，结合AI智能体应用以及AIGC内容生产，实现工会工作从传统线下向智能化的转型升级。
+        </p>
+
+
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-clipboard-list icon"></i>一、制定活动方案</h2>
+            <div class="section-content-wrapper">
+                <div class="section-image-container">
+                    <img src="2.jpg" alt="活动方案规划" class="section-image">
+                </div>
+                <div class="section-text-container">
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-poll icon"></i>1. 线上需求调研</h3>
+                        <p>使用「<span class="tool-highlight">公众号</span>」/「<span class="tool-highlight">问卷星</span>」发放调研问卷，收集员工对活动形式的偏好（如线上知识竞赛、短视频创作赛等）。</p>
+                    </div>
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-file-alt icon"></i>2. 方案数字化呈现</h3>
+                        <p>通过「<span class="tool-highlight">腾讯文档</span>」「<span class="tool-highlight">飞书</span>」协作编辑活动方案，嵌入时间轴甘特图、预算分配表等可视化工具，便于工会委员远程协同的模板，通过「<span class="tool-highlight">公众号</span>」公布动态方案书，包含活动规则、奖励机制、参与入口二维码。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-bullhorn icon"></i>二、智能化通知触达</h2>
+            <div class="section-content-wrapper">
+                <div class="section-image-container">
+                     <img src="3.jpg" alt="智能化通知触达" class="section-image">
+                </div>
+                <div class="section-text-container">
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-paper-plane icon"></i>1. 多渠道精准推送</h3>
+                        <p>在「<span class="tool-highlight">公众号</span>」/「<span class="tool-highlight">公司内网</span>」推送「强提醒通知」，关联活动报名链接和倒计时提醒。</p>
+                    </div>
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-users-cog icon"></i>2. 分层动员机制</h3>
+                        <p>对活跃度低的员工，启用「<span class="tool-highlight">微信</span>」定向推送个性化邀请。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-magic icon"></i>三、数字化物料生产</h2>
+            <div class="section-content-wrapper">
+                 <div class="section-image-container">
+                    <img src="4.jpg" alt="数字化物料生产" class="section-image">
+                </div>
+                <div class="section-text-container">
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-robot icon"></i>1. 智能内容生成</h3>
+                        <p>使用「<span class="tool-highlight">AIGC</span>」设计自动化海报、物料、视频。</p>
+                    </div>
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-cloud-upload-alt icon"></i>2. 云端资源分发</h3>
+                        <p>在公众号「知识库」建立活动专区，分类存储学习资料、操作指南、范例视频，设置互动学习栏目，开发「<span class="tool-highlight">AI智能体</span>」「答题闯关」，集成安全规范题库，员工权益科普，法律知识科普。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-medal icon"></i>四、激励体系</h2>
+             <div class="section-content-wrapper">
+                 <div class="section-image-container">
+                    <img src="5.jpg" alt="员工激励体系" class="section-image">
+                </div>
+                <div class="section-text-container">
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-star icon"></i>1. 正向驱动</h3>
+                        <p>设计「激励系统」：对活动参与积极分子，在平台予以展示，结合公司规章制度与考核机制对相关人员予以激励。</p>
+                    </div>
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-share-alt icon"></i>2. 社交裂变传播</h3>
+                        <p>在「<span class="tool-highlight">公众号</span>」，以及全网对员工发布活动信息，以及活动总结的相关高速工会话题的，按传播效果予以激励。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-chart-pie icon"></i>五、智能化成果收集</h2>
+             <div class="section-content-wrapper">
+                 <div class="section-image-container">
+                    <img src="6.jpg" alt="智能化成果收集" class="section-image">
+                </div>
+                <div class="section-text-container">
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-database icon"></i>1. 自动化数据归集</h3>
+                        <p>使用「<span class="tool-highlight">腾讯文档</span>」「<span class="tool-highlight">飞书</span>」智能表格，设置自动化填报流程：照片/视频直接上传至指定云相册，报表数据自动汇总。</p>
+                    </div>
+                    <div class="subsection">
+                        <h3 class="subsection-title"><i class="fas fa-chart-bar icon"></i>2. 可视化分析</h3>
+                        <p>使用平台后台数据统计，通过「<span class="tool-highlight">飞书</span>」智能表格生成多维看板：呈现活动效果的可视化等。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-tools icon"></i>核心工具</h2>
+            <!-- The table itself is a strong visual, might not need a side image unless it's very abstract/backgroundy -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>环节</th>
+                            <th>核心工具</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fas fa-users icon"></i>协同办公</td>
+                            <td>
+                                <span class="tool-highlight">微信</span>/<span class="tool-highlight">内网平台</span>、
+                                <span class="tool-highlight">腾讯文档</span>（协作）、
+                                <span class="tool-highlight">飞书多维表格</span>（数据管理）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-paint-brush icon"></i>内容生产</td>
+                            <td>
+                                <span class="tool-highlight">AIGC服务</span>、
+                                <span class="tool-highlight">剪映</span>、
+                                <span class="tool-highlight">DeepSeek</span>、
+                                <span class="tool-highlight">问卷星</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-broadcast-tower icon"></i>互动传播</td>
+                            <td>
+                                <span class="tool-highlight">微信</span>、
+                                <span class="tool-highlight">抖音</span>、
+                                <span class="tool-highlight">公众号</span>、
+                                <span class="tool-highlight">视频号</span>、
+                                <span class="tool-highlight">公司内网</span>、
+                                <span class="tool-highlight">公司网站</span>、其他
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-chart-line icon"></i>数据分析</td>
+                            <td>
+                                平台后台数据统计、
+                                <span class="tool-highlight">飞书智能表格</span>可视化
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
